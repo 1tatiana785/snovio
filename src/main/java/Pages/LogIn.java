@@ -1,7 +1,7 @@
 package Pages;
 
 import Core.Constants;
-import Core.MyActions;
+import Core.Element;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
@@ -13,8 +13,8 @@ public class LogIn {
 
     @Step("set email and password: {0} step ...")
     public void logIn() {
-        MyActions.sendKeys(userNameField, Constants.email);
-        MyActions.sendKeys(passwordField, Constants.password);
-        MyActions.click(logInButton);
+        Element.sendKeys(userNameField, Constants.email);
+        Element.sendKeys(passwordField, Constants.password);
+        Element.click(logInButton);
     }
 }

@@ -1,1 +1,0 @@
-{"uuid":"ce689c53-7d7c-4a80-bf07-797eb67e62ff","name":"snovio","children":["82590e29-8a69-464d-8ea7-a03346f45124"],"befores":[{"name":"login","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1610611026068,"stop":1610611030535}],"afters":[],"links":[],"start":1610611026052,"stop":1610611043211}

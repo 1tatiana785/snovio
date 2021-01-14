@@ -2,7 +2,6 @@ package Pages;
 
 import Core.Driver;
 import Core.Element;
-import Core.MyActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -28,19 +27,17 @@ public class FindEmails {
 
 
     public void waitBulkDomainSearchPage() {
-        Element.visibilityElLocation(bulkPage);
+        Element.visibilityElLoc(bulkPage);
     }
 
     public void clickDomainNamesButton() {
-        WebElement button = Driver.getDriver().findElement(domainNamesRadioButton);
-        MyActions.click(uploadFromFileButton);
-        if (button.isEnabled())
-            MyActions.click(domainNamesRadioButton);
-        else MyActions.click(uploadFromFileButton);
+        Element.click(uploadFromFileButton);
+        Element.presenceElLocation(domainNamesRadioButton);
+        Element.click(domainNamesRadioButton);
     }
 
-    public void chooseFile(String file) {
-        MyActions.sendKeys(chooseFile, file);
+    public void chooseFile(String name) {
+        Element.sendKeys(chooseFile, name);
     }
 
     public String checkFile() {
@@ -49,32 +46,17 @@ public class FindEmails {
     }
 
     public void clickEmailsOnlyButton() {
-        WebElement button = Driver.getDriver().findElement(emailsOnlyButton);
-        if (button.isEnabled())
-            MyActions.click(emailsOnlyButton);
+        Element.presenceElLocation(emailsOnlyButton);
+        Element.click(emailsOnlyButton);
     }
-
-    /*public void uncheckCheckbox (String number) {
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-        Element.presenceElLocationString(selectedCheckbox, number);
-        WebElement checkbox = Driver.getDriver().findElement(By.xpath(String.format(checkCheckbox, number)));
-        if (checkbox.isEnabled()) {
-            if (MyActions.selectStringNumber(checkCheckbox, number)) {
-                MyActions.clickStringNumber(checkCheckbox, number);
-            }
-        }
-    }*/
 
     public void uncheckCheckbox1() {
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-        Element.presenceElLocation(selected1Checkbox);
         WebElement element = Driver.getDriver().findElement(selected1Checkbox);
-        if (element.isDisplayed()) {
-            if (element.isSelected()) {
-                MyActions.click(selected1Checkbox);
-            }
+        if (element.isSelected()) {
+            Element.presenceElLocation(selected1Checkbox);
+            Element.click(selected1Checkbox);
         }
     }
 
@@ -83,10 +65,8 @@ public class FindEmails {
         js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
         Element.presenceElLocation(selected2Checkbox);
         WebElement element = Driver.getDriver().findElement(selected2Checkbox);
-        if (element.isDisplayed()) {
-            if (element.isSelected()) {
-                MyActions.click(selected2Checkbox);
-            }
+        if (element.isSelected()) {
+            Element.click(selected2Checkbox);
         }
     }
 
@@ -95,10 +75,8 @@ public class FindEmails {
         js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
         Element.presenceElLocation(selected3Checkbox);
         WebElement element = Driver.getDriver().findElement(selected3Checkbox);
-        if (element.isDisplayed()) {
-            if (element.isSelected()) {
-                MyActions.click(selected3Checkbox);
-            }
+        if (element.isSelected()) {
+            Element.click(selected3Checkbox);
         }
     }
 
@@ -107,10 +85,8 @@ public class FindEmails {
         js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
         Element.presenceElLocation(selected1Checkbox);
         WebElement element = Driver.getDriver().findElement(selected1Checkbox);
-        if (element.isDisplayed()) {
-            if (!element.isSelected()) {
-                MyActions.click(selected1Checkbox);
-            }
+        if (!element.isSelected()) {
+            Element.click(selected1Checkbox);
         }
     }
 
@@ -121,7 +97,7 @@ public class FindEmails {
         WebElement element = Driver.getDriver().findElement(selected2Checkbox);
         if (element.isDisplayed()) {
             if (!element.isSelected()) {
-                MyActions.click(selected2Checkbox);
+                Element.click(selected2Checkbox);
             }
         }
     }
@@ -131,25 +107,20 @@ public class FindEmails {
         js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
         Element.presenceElLocation(selected3Checkbox);
         WebElement element = Driver.getDriver().findElement(selected3Checkbox);
-        if (element.isDisplayed()) {
-            if (element.isSelected()) {
-                MyActions.click(selected3Checkbox);
-            }
+        if (element.isSelected()) {
+            Element.click(selected3Checkbox);
         }
     }
 
     public void clickStartSearchButton() {
         WebElement button = Driver.getDriver().findElement(startSearchButton);
         if (button.isEnabled())
-            MyActions.click(startSearchButton);
+            Element.click(startSearchButton);
     }
 
     public void waitCheckType() {
         Element.presenceElLocation(errorPopUp);
-        WebElement button = Driver.getDriver().findElement(errorPopUp);
-        if (button.isEnabled())
-            checkType();
-        //   System.out.println(checkType());
+        checkType();
     }
 
     public String checkType() {
@@ -158,7 +129,7 @@ public class FindEmails {
     }
 
     public void clickOkButton() {
-        MyActions.click(okButton);
+        Element.click(okButton);
     }
 
     public String getResultText1() {
@@ -174,9 +145,6 @@ public class FindEmails {
 
     public void waitResultText() {
         Element.presenceElLocation(resultButton);
-        WebElement button = Driver.getDriver().findElement(resultButton);
-        if (button.isEnabled())
-            getResultText();
-        //   System.out.println(getResultText());
+        getResultText();
     }
 }

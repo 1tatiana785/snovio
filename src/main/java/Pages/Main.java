@@ -2,7 +2,6 @@ package Pages;
 
 import Core.Driver;
 import Core.Element;
-import Core.MyActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.Actions;
 
@@ -18,12 +17,12 @@ public class Main {
 
     public void clickClosedButton() {
         Element.presenceElLocation(closeButton);
-        MyActions.click(closeButton);
+        Element.click (closeButton);
     }
 
     public void selectMenu() {
         actions.moveToElement(Driver.getDriver().findElement(findEmailLink)).build().perform();
-        MyActions.visibility(getListLink);
+        Element.visibilityElLoc(getListLink);
         actions.moveToElement(Driver.getDriver().findElement(domainLink)).click().build().perform();
     }
 }

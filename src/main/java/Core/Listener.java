@@ -8,12 +8,15 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+
+import java.io.ByteArrayInputStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 
 public class Listener implements ITestListener {
-    private static String getMethodName(ITestResult iTestResult) {
+
+    public static String getMethodName(ITestResult iTestResult) {
         return iTestResult.getMethod().getConstructorOrMethod().getName();
     }
 
@@ -60,19 +63,12 @@ public class Listener implements ITestListener {
     @Override
     public void onTestFailure(ITestResult arg0) {
         System.out.println("OnTestFailure method Called " + getMethodName(arg0) + " Failed");
-        //Get driver from Driver and assign to local webDriver variable.
         Object testClass = arg0.getInstance();
-
-        //Allure ScreenshotRobot and SaveRTestingLog
         if (Driver.getDriver() instanceof WebDriver) {
             System.out.println("Screenshot captured for test case: " + getMethodName(arg0));
             saveScreenshotPNG(Driver.getDriver());
             //Take screenshot
-            String base64 = ((TakesScreenshot) Driver.getInstance().getDriver()).getScreenshotAs(OutputType.BASE64);
-            byte[] screenShot = ((TakesScreenshot) Driver.getInstance().getDriver()).getScreenshotAs(OutputType.BYTES);
-            // Allure.addAttachment("Any Name", new ByteArrayInputStream(((TakesScreenshot)Driver.getDriver()).getScreenshotAs(OutputType.BYTES)));
-            Allure.getLifecycle().addAttachment(LocalDateTime.now()
-                    .format(DateTimeFormatter.ofPattern("dd-MMM-yy_hh:mm:ss")), "image/png", "png", screenShot);
+            Allure.addAttachment((LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MMM-yy_hh:mm:ss"))), new ByteArrayInputStream(((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES)));
         }
     }
 
