@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.Arrays;
 import java.util.Collection;
 
-final public class Element {
+public class Element {
 
     private static Collection ignored_exeptions = Arrays.asList(
             NoSuchElementException.class,

@@ -145,6 +145,7 @@ public class FindEmails {
     }
 
     public void waitCheckType() {
+        Element.presenceElLocation(errorPopUp);
         WebElement button = Driver.getDriver().findElement(errorPopUp);
         if (button.isEnabled())
             checkType();
@@ -172,12 +173,10 @@ public class FindEmails {
     }
 
     public void waitResultText() {
+        Element.presenceElLocation(resultButton);
         WebElement button = Driver.getDriver().findElement(resultButton);
         if (button.isEnabled())
             getResultText();
         //   System.out.println(getResultText());
     }
 }
-       /* WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 3000);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(selected1Checkbox));
-        Element.waitEl();*/

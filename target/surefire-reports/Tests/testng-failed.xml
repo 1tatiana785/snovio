@@ -6,7 +6,6 @@
       <class name="Tests">
         <methods>
           <include name="login"/>
-          <include name="tearDown"/>
           <include name="test"/>
         </methods>
       </class> <!-- Tests -->

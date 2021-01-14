@@ -2,11 +2,10 @@ package Core;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
 
-import java.util.concurrent.TimeUnit;
+import static Core.Constants.DRIVER_CHROME;
+import static Core.Constants.DRIVER_FIREFOX;
 
 final public class Driver {
     private static final ThreadLocal<Driver> driverThread = new ThreadLocal<>();
@@ -27,26 +26,15 @@ final public class Driver {
     public static WebDriver getDriver() {
         if (driver == null) {
             if (Constants.browserName.equalsIgnoreCase("chrome")) {
-                System.setProperty("webdriver.chrome.driver", "/home/tatiana/_Projects/snovio/drivers/chromedriver");
-                ChromeOptions chromeOptions = new ChromeOptions();
+                System.setProperty("webdriver.chrome.driver", DRIVER_CHROME);
                 //chromeOptions.addArguments("--headless");
-                driver = new ChromeDriver(chromeOptions);
+                driver = new ChromeDriver(new DriverOptions().chromeOptions());
             } else if (Constants.browserName.equalsIgnoreCase("firefox")) {
-                System.setProperty("webdriver.gecko.driver", "/home/tatiana/_Projects/snovio/drivers/geckodriver");
-                driver = new FirefoxDriver(new FirefoxOptions());
+                System.setProperty("webdriver.gecko.driver", DRIVER_FIREFOX);
+                driver = new FirefoxDriver(new DriverOptions().firefoxOptions());
             }
-            driver.manage().deleteAllCookies();
-            driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-            driver.manage().window().maximize();
-            driver.get(Constants.url);
         }
         return driver;
-    }
-
-    public static void quite() {
-        System.out.println("Quitting the browser");
-        driver.quit();
-        driver = null;
     }
 
     public static void close() {

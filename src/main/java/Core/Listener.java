@@ -43,6 +43,8 @@ public class Listener implements ITestListener {
     @Override
     public void onFinish(ITestContext iTestContext) {
         System.out.println("OnFinish method called " + iTestContext.getName());
+        System.out.println("Quitting the browser");
+        Driver.getDriver().quit();
     }
 
     @Override

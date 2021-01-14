@@ -1,10 +1,10 @@
+import Core.Constants;
 import Core.Driver;
 import Core.Listener;
 import Pages.FindEmails;
 import Pages.LogIn;
 import Pages.Main;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -20,6 +20,7 @@ public class Tests {
 
     @BeforeTest
     public void login() {
+        Driver.getDriver().get(Constants.url);
         logInPage.logIn();
         mainPage.clickClosedButton();
     }
@@ -29,10 +30,10 @@ public class Tests {
         mainPage.selectMenu();
         findEmails.waitBulkDomainSearchPage();
         findEmails.clickDomainNamesButton();
-        findEmails.chooseFile("/home/tatiana/_Projects/snovio/drivers/cat.jpg");
+        findEmails.chooseFile(Constants.File1);
         Assert.assertEquals(findEmails.checkFile(), "File type must be CSV, XLS, XLSX or TXT");
         System.out.println("Invalid file type. The text is shown " + "(" + findEmails.checkFile() + ")");
-        findEmails.chooseFile("/home/tatiana/_Projects/snovio/drivers/2.txt");
+        findEmails.chooseFile(Constants.File2);
         findEmails.clickEmailsOnlyButton();
         findEmails.uncheckCheckbox1();
         findEmails.uncheckCheckbox2();
@@ -46,10 +47,5 @@ public class Tests {
         findEmails.clickStartSearchButton();
         findEmails.waitResultText();
         Assert.assertEquals(findEmails.getResultText(), true);
-    }
-
-    @AfterTest
-    public void tearDown() {
-        Driver.quite();
     }
 }
