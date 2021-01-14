@@ -1,0 +1,1 @@
+{"uuid":"eb1449c6-cc76-4114-b2ba-26aa6aa0773f","name":"Command line test","children":["7ced1bbc-7a2b-4cd6-a300-b3c3f59b7ae9"],"befores":[{"name":"login","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1610609542703,"stop":1610609547190}],"afters":[],"links":[],"start":1610609542688,"stop":1610609559320}

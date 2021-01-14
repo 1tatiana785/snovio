@@ -1,0 +1,7 @@
+<suite name="Suite">
+    <listeners>
+        <listener class-name="Core.Listener"/>
+    </listeners>
+    <test name="Tests">
+    </test>
+</suite>

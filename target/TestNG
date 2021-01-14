@@ -1,0 +1,7 @@
+<suite name="Suite">
+    <test name="MainPage">
+        <packages>
+            <package name="Tests"/>
+        </packages>
+    </test>
+</suite>
